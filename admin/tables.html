@@ -360,12 +360,12 @@
                 <div class="row">
                   <span class="col-xl-3 mb-4">
                     <a href="#" data-toggle="modal" data-target="#areaModal">
-                      <div class="card border-left-info shadow h-100">
+                      <div class="card border-left-info shadow h-100" id="areaCard">
                         <div class="card-body">
                           <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                               <div class="text-xs font-weight-bold text-info text-uppercase mb-1">영역</div>
-                              <div class="h5 mb-0 font-weight-bold text-gray-800">영역을 선택하세요</div>
+                              <div class="h5 mb-0 font-weight-bold text-gray-800" id="areaValue">영역을 선택하세요</div>
                             </div>
                             <div class="col-auto">
                               <i class="fas fa-puzzle-piece fa-2x text-gray-300"></i>
@@ -383,7 +383,7 @@
                           <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                               <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">광고물</div>
-                              <div class="h5 mb-0 font-weight-bold text-gray-800">광고물을 선택하세요</div>
+                              <div class="h5 mb-0 font-weight-bold text-gray-800" id="adItemValue">광고물을 선택하세요</div>
                             </div>
                             <div class="col-auto">
                               <i class="fas fa-ad fa-2x text-gray-300"></i>
@@ -473,56 +473,25 @@
               <h6 class="m-0 font-weight-bold text-primary">TABLE</h6>
             </div>
             <div class="card-body">
-
-
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>날짜</th>
-                      <th>영역명</th>
-                      <th>광고물명</th>
-                      <th>상태</th>
-                      <th>노출</th>
-                      <th>클릭</th>
-                      <th>CTR</th>
+                      <th class="text-center">날짜</th>
+                      <th class="text-center">영역명</th>
+                      <th class="text-center">광고물명</th>
+                      <th class="text-center">상태</th>
+                      <th class="text-center">노출</th>
+                      <th class="text-center">클릭</th>
+                      <th class="text-center">CTR</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td>2020-01-01</td>
-                      <td>영역명 최대 2줄</td>
-                      <td>광고물명 최대 2줄</td>
-                      <td>Normal</td>
-                      <td>10,000</td>
-                      <td>8</td>
-                      <td>0.08%</td>
-                    </tr>
-                    <tr>
-                      <td>2020-01-02</td>
-                      <td>영역명 최대 2줄</td>
-                      <td>광고물명 최대티티 2줄</td>
-                      <td>Normal</td>
-                      <td>10,000</td>
-                      <td>8</td>
-                      <td>0.08%</td>
-                    </tr>
-                    <tr>
-                      <td>2020-01-03</td>
-                      <td>영역명 최대 2줄</td>
-                      <td>광고물명 최대 2줄</td>
-                      <td>Normal</td>
-                      <td>10,000</td>
-                      <td>8</td>
-                      <td>0.08%</td>
-                    </tr>
+                  <tbody id="tableBody">
                   </tbody>
                 </table>
               </div>
-
             </div>
           </div>
-
         </div>
         <!-- /.container-fluid -->
 
@@ -562,7 +531,6 @@
           <input type="text" class="form-control" id="startDatePicker" value="2020-01-01">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">적용</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
         </div>
       </div>
@@ -580,102 +548,95 @@
           <input type="text" class="form-control" id="endDatePicker">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">적용</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
         </div>
       </div>
     </div>
   </div>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">로그아웃</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">로그아웃을 원하시면 아래의 확인을 눌러주세요.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-            <a class="btn btn-primary" href="login.html">확인</a>
-          </div>
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">로그아웃</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">로그아웃을 원하시면 아래의 확인을 눌러주세요.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
+          <a class="btn btn-primary" href="login.html">확인</a>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Area Modal-->
-    <div class="modal fade" id="areaModal" tabindex="-1" role="dialog" aria-labelledby="areaModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="areaModalLabel">영역</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <ul>
-              <a href="#">
-                <li>영역1</li>
-              </a>
-              <li>영역2</li>
-            </ul>
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-            <a class="btn btn-primary" href="login.html">확인</a>
-          </div>
+  <!-- Area Modal-->
+  <div class="modal fade" id="areaModal" tabindex="-1" role="dialog" aria-labelledby="areaModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="areaModalLabel">영역</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ul id="areaList" style="list-style-type: none; padding: 0; margin: 0;">
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- AdItems Modal-->
-    <div class="modal fade" id="adItemModal" tabindex="-1" role="dialog" aria-labelledby="adItemModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="adItemModalLabel">광고물</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <ul>
-              <a href="#">
-                <li>광고물</li>
-              </a>
-              <li>광고물</li>
-            </ul>
-          </div>
+  <!-- Items Modal-->
+  <div class="modal fade" id="adItemModal" tabindex="-1" role="dialog" aria-labelledby="adItemModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="adItemModalLabel">광고물</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ul id="adItemList" style="list-style-type: none; padding: 0; margin: 0;">
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- main.js -->
-    <script src="js/main.js"></script>
-    
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- main.js -->
+  <script src="js/main.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-    <script src="vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
+  <!-- Page level plugins -->
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  <script src="vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/datatables-demo.js"></script>
 </body>
 
 </html>
