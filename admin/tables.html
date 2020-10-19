@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Tables</title>
+  <title>Admin</title>
 
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,14 +19,14 @@
 
   <!-- Custom styles for this template -->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-  
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link href="vendor/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet">
+  <script src="vendor/jquery/jquery.min.js"></script>
 
 </head>
 
 <body id="page-top">
+
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -401,7 +401,7 @@
                           <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                               <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">시작일</div>
-                              <div class="h5 mb-0 font-weight-bold text-gray-800">2020-01-01</div>
+                              <div class="h5 mb-0 font-weight-bold text-gray-800" id="startDateValue">2020-01-01</div>
                             </div>
                             <div class="col-auto">
                               <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -413,13 +413,13 @@
                   </span>
 
                   <span class="col-xl-3 mb-4">
-                    <a href="#">
+                    <a href="#" data-toggle="modal" data-target="#endDateModal">
                       <div class="card border-left-primary shadow h-100">
                         <div class="card-body">
                           <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                               <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">종료일</div>
-                              <div class="h5 mb-0 font-weight-bold text-gray-800">2020-10-01</div>
+                              <div class="h5 mb-0 font-weight-bold text-gray-800" id="endDateValue">2020-10-01</div>
                             </div>
                             <div class="col-auto">
                               <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -431,58 +431,37 @@
                   </span>
                 </div>
 
-                <!--                 <div class="mb-4">
-                  <span class="dropdown mr-3">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonArea"
-                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      영역 선택
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonArea">
-                      <a class="dropdown-item" href="#">영역1</a>
-                      <a class="dropdown-item" href="#">영역2</a>
-                      <a class="dropdown-item" href="#">영역3</a>
-                    </div>
-                  </span>
-
-                  <span class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonItem"
-                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      광고물 선택
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonItem">
-                      <a class="dropdown-item" href="#">아이템1</a>
-                      <a class="dropdown-item" href="#">아이템2</a>
-                      <a class="dropdown-item" href="#">아이템3</a>
-                    </div>
-                  </span>
-                </div> -->
-
-
-                <div class="row">
-
-                </div>
-
                 <!-- era short-cut & submit -->
-                <div class="row col-xl-12 mb-4">
-                  <a href="#" class="btn btn-primary btn-sm col-xl-1 py-2 mx-1">
-                    <span class="text">어제</span>
-                  </a>
-                  <a href="#" class="btn btn-primary btn-sm col-xl-1 py-2 mx-1">
-                    <span class="text">이번주</span>
-                  </a>
-                  <a href="#" class="btn btn-primary btn-sm col-xl-1 py-2 mx-1">
-                    <span class="text">지난달</span>
-                  </a>
-                  <a href="#" class="btn btn-primary btn-sm col-xl-1 py-2 mx-1">
-                    <span class="text">이번달</span>
-                  </a>
-                  <a href="#" class="btn btn-primary btn-sm col-xl-1 py-2 mx-1">
-                    <span class="text">최근60일</span>
-                  </a>
-                  <a href="#" class="btn btn-primary btn-sm col-xl-1 py-2 mx-1">
-                    <span class="text">최근90일</span>
-                  </a>
+                <div class="row">
+                  <span class="col-xl-8" id="shortCutBox">
+                    <div class="mb-4" id="shortCutBox">
+                      <a href="#" class="btn btn-primary btn-sm col-xl-1 py-2 mx-1">
+                        <span class="text">어제</span>
+                      </a>
+                      <a href="#" class="btn btn-primary btn-sm col-xl-1 py-2 mx-1">
+                        <span class="text">이번주</span>
+                      </a>
+                      <a href="#" class="btn btn-primary btn-sm col-xl-1 py-2 mx-1">
+                        <span class="text">지난달</span>
+                      </a>
+                      <a href="#" class="btn btn-primary btn-sm col-xl-1 py-2 mx-1">
+                        <span class="text">이번달</span>
+                      </a>
+                      <a href="#" class="btn btn-primary btn-sm col-xl-1 py-2 mx-1">
+                        <span class="text">최근60일</span>
+                      </a>
+                      <a href="#" class="btn btn-primary btn-sm col-xl-1 py-2 mx-1">
+                        <span class="text">최근90일</span>
+                      </a>
+                    </div>
+                  </span>
+                  <span class="col-xl-4" id="submitBox">
+                    <a href="#" class="btn btn-danger btn-sm col-xl-4 py-2 mx-1 float-right">
+                      <span class="text">적용</span>
+                    </a>
+                  </span>
                 </div>
+
 
               </div>
             </div>
@@ -509,17 +488,6 @@
                       <th>CTR</th>
                     </tr>
                   </thead>
-                  <!--                   <tfoot>
-                    <tr>
-                      <th>날짜</th>
-                      <th>영역명</th>
-                      <th>광고물명</th>
-                      <th>상태</th>
-                      <th>노출</th>
-                      <th>클릭</th>
-                      <th>CTR</th>
-                    </tr>
-                  </tfoot> -->
                   <tbody>
                     <tr>
                       <td>2020-01-01</td>
@@ -582,124 +550,132 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-    Open Modal
-  </button>
-
-  <!-- Start Date Modal -->
-  <div class="modal fade" id="startDateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  <!-- Start DatePicker Modal -->
+  <div class="modal fade" id="startDateModal" tabindex="-1" role="dialog" aria-labelledby="startDate"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Datepicker</h5>
+          <h5 class="modal-title" id="startDate">시작일</h5>
         </div>
         <div class="modal-body">
-          <input type="text" class="form-control" id="startDatePicker">
+          <input type="text" class="form-control" id="startDatePicker" value="2020-01-01">
         </div>
         <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">적용</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
         </div>
       </div>
     </div>
   </div>
 
-  <script>
-
-  </script>
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+  <!-- End DatePicker Modal -->
+  <div class="modal fade" id="endDateModal" tabindex="-1" role="dialog" aria-labelledby="endDate" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">로그아웃</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
+          <h5 class="modal-title" id="endDate">종료일</h5>
         </div>
-        <div class="modal-body">로그아웃을 원하시면 아래의 확인을 눌러주세요.</div>
+        <div class="modal-body">
+          <input type="text" class="form-control" id="endDatePicker">
+        </div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-          <a class="btn btn-primary" href="login.html">확인</a>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">적용</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Area Modal-->
-  <div class="modal fade" id="areaModal" tabindex="-1" role="dialog" aria-labelledby="areaModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="areaModalLabel">영역</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <ul>
-
-            <a href="#">
-              <li>영역1</li>
-            </a>
-            <li>영역2</li>
-          </ul>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-          <a class="btn btn-primary" href="login.html">확인</a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">로그아웃</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">로그아웃을 원하시면 아래의 확인을 눌러주세요.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
+            <a class="btn btn-primary" href="login.html">확인</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Ad Items Modal-->
-  <div class="modal fade" id="adItemModal" tabindex="-1" role="dialog" aria-labelledby="adItemModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="adItemModalLabel">광고물</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
+    <!-- Area Modal-->
+    <div class="modal fade" id="areaModal" tabindex="-1" role="dialog" aria-labelledby="areaModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="areaModalLabel">영역</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <a href="#">
+                <li>영역1</li>
+              </a>
+              <li>영역2</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
+            <a class="btn btn-primary" href="login.html">확인</a>
+          </div>
         </div>
-        <div class="modal-body">
-          <ul>
+      </div>
+    </div>
 
-            <a href="#">
+    <!-- AdItems Modal-->
+    <div class="modal fade" id="adItemModal" tabindex="-1" role="dialog" aria-labelledby="adItemModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="adItemModalLabel">광고물</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <a href="#">
+                <li>광고물</li>
+              </a>
               <li>광고물</li>
-            </a>
-            <li>광고물</li>
-          </ul>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- main.js -->
+    <script src="js/main.js"></script>
+    
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-  <script src="vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 
-  <!-- Page level custom scripts -->
-  <script src="js/demo/datatables-demo.js"></script>
-
-  
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
 </body>
 
 </html>
