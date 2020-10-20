@@ -86,48 +86,78 @@
         // 어제
         $('#shortCutBox a:nth-child(1)').on('click', function () {
             $('#startDateValue').text(toStringDate(new Date(new Date().setDate(new Date().getDate() - 1))));
+            $('#startDatePicker').datepicker('setDate', new Date(new Date().setDate(new Date().getDate() - 1)));
+            $('#startDatePicker').datepicker('update');
             $('#startDatePicker').val(toStringDate(new Date(new Date().setDate(new Date().getDate() - 1))));
+          
             $('#endDateValue').text(toStringDate(new Date(new Date().setDate(new Date().getDate() - 1))));
+            $('#endDatePicker').datepicker('setDate', new Date(new Date().setDate(new Date().getDate() - 1)));
+            $('#endDatePicker').datepicker('update');
             $('#endDatePicker').val(toStringDate(new Date(new Date().setDate(new Date().getDate() - 1))));
         });
 
         // 이번주
         $('#shortCutBox a:nth-child(2)').on('click', function () {
             $('#startDateValue').text(toStringDate(new Date(new Date().setDate(today.getDate() - today.getDay()))));
+            $('#startDatePicker').datepicker('setDate', new Date(new Date().setDate(today.getDate() - today.getDay())));
+            $('#startDatePicker').datepicker('update');
             $('#startDatePicker').val(toStringDate(new Date(new Date().setDate(today.getDate() - today.getDay()))));
+
             $('#endDateValue').text(toStringDate(today));
+            $('#endDatePicker').datepicker('setDate', today);
+            $('#endDatePicker').datepicker('update');
             $('#endDatePicker').val(toStringDate(today));
         });
 
         // 지난달
         $('#shortCutBox a:nth-child(3)').on('click', function () {
             $('#startDateValue').text(toStringDate(new Date(today.getFullYear(), today.getMonth() - 1, 1)));
+            $('#startDatePicker').datepicker('setDate', new Date(today.getFullYear(), today.getMonth() - 1, 1));
+            $('#startDatePicker').datepicker('update');
             $('#startDatePicker').val(toStringDate(new Date(today.getFullYear(), today.getMonth() - 1, 1)));
+
             $('#endDateValue').text(toStringDate(new Date(today.getFullYear(), today.getMonth(), 0)));
+            $('#endDatePicker').datepicker('setDate', new Date(today.getFullYear(), today.getMonth(), 0));
+            $('#endDatePicker').datepicker('update');
             $('#endDatePicker').val(toStringDate(new Date(today.getFullYear(), today.getMonth(), 0)));
         });
 
         // 이번달
         $('#shortCutBox a:nth-child(4)').on('click', function () {
             $('#startDateValue').text(toStringDate(new Date(today.getFullYear(), today.getMonth(), 1)));
+            $('#startDatePicker').datepicker('setDate', new Date(today.getFullYear(), today.getMonth(), 1));
+            $('#startDatePicker').datepicker('update');
             $('#startDatePicker').val(toStringDate(new Date(today.getFullYear(), today.getMonth(), 1)));
+
             $('#endDateValue').text(toStringDate(today));
+            $('#endDatePicker').datepicker('setDate', today);
+            $('#endDatePicker').datepicker('update');
             $('#endDatePicker').val(toStringDate(today));
         });
 
         // 최근60일
         $('#shortCutBox a:nth-child(5)').on('click', function () {
             $('#startDateValue').text(toStringDate(new Date(new Date().setDate(new Date().getDate() - 60))));
+            $('#startDatePicker').datepicker('setDate', new Date(new Date().setDate(new Date().getDate() - 60)));
+            $('#startDatePicker').datepicker('update');
             $('#startDatePicker').val(toStringDate(new Date(new Date().setDate(new Date().getDate() - 60))));
+
             $('#endDateValue').text(toStringDate(today));
+            $('#endDatePicker').datepicker('setDate', today);
+            $('#endDatePicker').datepicker('update');
             $('#endDatePicker').val(toStringDate(today));
         });
 
         // 최근90일
         $('#shortCutBox a:nth-child(6)').on('click', function () {
             $('#startDateValue').text(toStringDate(new Date(new Date().setDate(new Date().getDate() - 90))));
+            $('#startDatePicker').datepicker('setDate', new Date(new Date().setDate(new Date().getDate() - 90)));
+            $('#startDatePicker').datepicker('update');
             $('#startDatePicker').val(toStringDate(new Date(new Date().setDate(new Date().getDate() - 90))));
+            
             $('#endDateValue').text(toStringDate(today));
+            $('#endDatePicker').datepicker('setDate', today);
+            $('#endDatePicker').datepicker('update');
             $('#endDatePicker').val(toStringDate(today));
         });
 
