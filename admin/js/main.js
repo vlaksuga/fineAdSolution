@@ -8,6 +8,7 @@
     var sDate = new Date(new Date().setDate(new Date().getDate() - START_DATE_GAP));
     var eDate = today;
     var sitepkey, adpkey, areapkey;
+    var areaname, adname;
     var startDateCode = toStringDate(sDate).split("-").join("");
     var endDateCode = toStringDate(eDate).split("-").join("");
 
@@ -52,8 +53,12 @@
                     $('#areaValue').text($(this).text());
                     $('#areaModal').modal('hide');
                     areapkey = $(this).val();
+                    areaname = $(this).text();
+                    $('#adItemValue').text('광고물을 선택하세요.');
+                    adpkey = null;
+                    adname = null;
                     buildAdItemList(areapkey);
-                });                
+                });
             }
         });
     };
@@ -78,6 +83,7 @@
                     $('#adItemValue').text($(this).text());
                     $('#adItemModal').modal('hide');
                     adpkey = $(this).val();
+                    adname = $(this).text();
                 });
             }
         });
@@ -100,8 +106,18 @@
                         return data.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3');
                     }
                 },
-                { data: 'adpkey' },
-                { data: 'adpkey' },
+                {
+                    data: '',
+                    render: function (data, type, row) {                        
+                        return areaname;
+                    }
+                },
+                {
+                    data: '',
+                    render: function (data, type, row) {
+                        return adname;
+                    }
+                },
                 { data: 'adpkey' },
                 { data: 'cnt' },
                 { data: 'clickcnt' },
