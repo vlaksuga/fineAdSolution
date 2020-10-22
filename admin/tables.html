@@ -36,7 +36,7 @@
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-<!--         <div class="sidebar-brand-icon rotate-n-15">
+        <!--         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div> -->
         <div class="sidebar-brand-text mx-3">FINEAD ADMIN</div>
@@ -45,7 +45,7 @@
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Tables -->
+      <!-- Nav Item - Tables -->
       <li class="nav-item active">
         <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-table"></i>
@@ -104,7 +104,7 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-<!--           <h1 class="h3 mb-2 text-gray-800">광고 통계</h1>
+          <!--           <h1 class="h3 mb-2 text-gray-800">광고 통계</h1>
           <p class="mb-4">광고통계에 대한 설명입니다.</p> -->
 
           <!-- filter card-->
@@ -219,7 +219,7 @@
                     </div>
                   </span>
                   <span class="col-xl-4" id="submitBox">
-                    <a href="#" class="btn btn-danger btn-sm col-xl-4 py-2 mx-1 float-right">
+                    <a href="#" id="submitBtn" class="btn btn-danger btn-sm col-xl-4 py-2 mx-1 float-right">
                       <span class="text">적용</span>
                     </a>
                   </span>
@@ -237,7 +237,7 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th class="text-center">날짜</th>
@@ -348,7 +348,7 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" style="max-height: 500px; overflow-y: auto;">
           <ul id="areaList" style="list-style-type: none; padding: 0; margin: 0;">
           </ul>
         </div>
